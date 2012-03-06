@@ -8,7 +8,7 @@
  * @source: [[mw:Snippets/Hide prefix in SpecialPrefixIndex]]
  * @rev: 2
  */
-if ( mw.config.get( 'wgCanonicalSpecialPageName' ) === 'Prefixindex' ) {
+function hidePrefix() {
 	var prefix = $( '#nsfrom' ).val();
 	var hideprefixVal = mw.util.getParamValue( 'hideprefix' );
 		// ^ Works only 1.17+
@@ -43,4 +43,9 @@ if ( mw.config.get( 'wgCanonicalSpecialPageName' ) === 'Prefixindex' ) {
 			return val.replace( prefix, '' );
                 } );
 	}
+}
+
+/* Check if we are in edit mode and the required modules are available and then customize the toolbar */
+if ( mw.config.get( 'wgCanonicalSpecialPageName' ) === 'Prefixindex' ) {
+	$(hidePrefix);
 }
