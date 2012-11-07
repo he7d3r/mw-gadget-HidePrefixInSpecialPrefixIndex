@@ -7,26 +7,33 @@
  *
  * @source: [[mw:Snippets/Hide prefix in SpecialPrefixIndex]]
  * @rev: 2
+ * @tracking: [[Special:GlobalUsage/User:Helder.wiki/Tools/Hide prefix in SpecialPrefixIndex.js]] ([[File:User:Helder.wiki/Tools/Hide prefix in SpecialPrefixIndex.js]])
  */
+/*jslint browser: true, white: true*/
+/*global jQuery, mediaWiki */
+( function ( mw, $ ) {
+'use strict';
+
 function hidePrefix() {
-	var prefix = $( '#nsfrom' ).val();
-	var hideprefixVal = mw.util.getParamValue( 'hideprefix' );
+	var prefix = $( '#nsfrom' ).val(),
+		hideprefixVal = mw.util.getParamValue( 'hideprefix' ),
 		// ^ Works only 1.17+
 		// Replace with a call to a similar function or create one if you're using 1.16 or lower
-	var $hideprefixLabel = $( '<label/>', {
+		$hideprefixLabel = $( '<label/>', {
 			'for': 'hideprefix',
 			'text': 'Hide prefix:'
-	} );
-	var $hideprefixInput = $( '<input/>', {
-		'type': 'checkbox',
-		'name': 'hideprefix',
-		'id': 'hideprefix',
-		'value': '1'
-	} );
-	if ( hideprefixVal == '1' ) {
+		} ),
+		$hideprefixInput = $( '<input/>', {
+			'type': 'checkbox',
+			'name': 'hideprefix',
+			'id': 'hideprefix',
+			'value': '1'
+		} ),
+		$hideprefixRow;
+	if ( hideprefixVal === '1' ) {
 		$hideprefixInput.attr( 'checked', 'checked' );
 	}
-	var $hideprefixRow = $( '<tr/>' )
+	$hideprefixRow = $( '<tr/>' )
 		.append( $( '<td/>', {
 			'class': 'mw-label',
 			'html': $hideprefixLabel
@@ -38,10 +45,12 @@ function hidePrefix() {
 	// Add checkbox
 	$( '#nsselect' ).find( ' > tbody:first' ).append( $hideprefixRow );
 	// Do it
-	if ( prefix && hideprefixVal == '1' ) {
-		$( '#mw-prefixindex-list-table td a' ).text( function( i, val ) {
+	if ( prefix && hideprefixVal === '1' ) {
+		/*jslint unparam:true*/
+		$( '#mw-prefixindex-list-table' ).find( 'td a' ).text( function( i, val ) {
 			return val.replace( prefix, '' );
                 } );
+		/*jslint unparam:false*/
 	}
 }
 
@@ -49,3 +58,5 @@ function hidePrefix() {
 if ( mw.config.get( 'wgCanonicalSpecialPageName' ) === 'Prefixindex' ) {
 	$(hidePrefix);
 }
+
+}( mediaWiki, jQuery ) );
