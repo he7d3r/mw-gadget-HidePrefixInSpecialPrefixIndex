@@ -47,7 +47,9 @@ function hidePrefix() {
 	// Do it
 	if ( prefix && hideprefixVal === '1' ) {
 		/*jslint unparam:true*/
-		$( '#mw-prefixindex-list-table' ).find( 'td a' ).text( function( i, val ) {
+		$( '#mw-prefixindex-list-table' ).find( 'td a' )
+		.add( $( '#mw-prefixindex-list' ).find( 'li a' ) )
+		.text( function( i, val ) {
 			return val.replace( prefix, '' );
                 } );
 		/*jslint unparam:false*/
