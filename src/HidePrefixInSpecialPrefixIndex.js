@@ -7,7 +7,6 @@
  *
  * @source: [[mw:Snippets/Hide prefix in SpecialPrefixIndex]]
  * @rev: 2
- * @tracking: [[Special:GlobalUsage/User:Helder.wiki/Tools/Hide prefix in SpecialPrefixIndex.js]] ([[File:User:Helder.wiki/Tools/Hide prefix in SpecialPrefixIndex.js]])
  */
 /*jslint browser: true, white: true*/
 /*global jQuery, mediaWiki */
