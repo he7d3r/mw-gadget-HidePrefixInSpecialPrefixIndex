@@ -8,8 +8,6 @@
  * @source: [[mw:Snippets/Hide prefix in SpecialPrefixIndex]]
  * @rev: 2
  */
-/*jslint browser: true, white: true*/
-/*global jQuery, mediaWiki */
 ( function ( mw, $ ) {
 'use strict';
 
@@ -45,13 +43,13 @@ function hidePrefix() {
 	$( '#nsselect' ).find( ' > tbody:first' ).append( $hideprefixRow );
 	// Do it
 	if ( prefix && hideprefixVal === '1' ) {
-		/*jslint unparam:true*/
 		$( '#mw-prefixindex-list-table' ).find( 'td a' )
 		.add( $( '#mw-prefixindex-list' ).find( 'li a' ) )
+		/*jshint unused:false */
 		.text( function( i, val ) {
 			return val.replace( prefix, '' );
                 } );
-		/*jslint unparam:false*/
+		/*jshint unused:true */
 	}
 }
 
