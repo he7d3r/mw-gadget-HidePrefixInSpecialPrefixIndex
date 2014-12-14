@@ -3,7 +3,7 @@
  *
  * Adds a checkbox to the form on [[Special:PrefixIndex]].
  * When the form is submitted with this checkbox ticked,
- * the prefix value will be hidden in the output (see also Wikimedia's [[bugzilla:27131]]).
+ * the prefix value will be hidden in the output (see also Wikimedia's [[phab:T29131]]).
  *
  * @source: [[mw:Snippets/Hide prefix in SpecialPrefixIndex]]
  * @rev: 2
